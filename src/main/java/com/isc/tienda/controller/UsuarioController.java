@@ -18,4 +18,19 @@ public class UsuarioController {
     public List<Usuario> listaUsuarios(){
         return usuarioService.getUsuarios();
     }
+
+    @GetMapping("/{id}")
+    public Usuario getUruario(@PathVariable int id){
+        return usuarioService.getUsuarioById(id);
+    }
+
+    @PostMapping("/add")
+    public Usuario createUsuario(@RequestBody Usuario usuario){
+        return usuarioService.createUsuario(usuario);
+    }
+
+    @PutMapping("/update")
+    public Usuario updateUsuario(@RequestBody Usuario usuario){
+        return usuarioService.updateUsuario(usuario);
+    }
 }

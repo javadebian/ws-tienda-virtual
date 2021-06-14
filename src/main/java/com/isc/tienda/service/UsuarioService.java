@@ -23,4 +23,13 @@ public class UsuarioService {
     public Usuario getUsuarioById(Integer id){
         return usuarioRepository.findById(id).orElse(null);
     }
+
+    public Usuario updateUsuario(Usuario usuario){
+        Usuario exitUser= usuarioRepository.findById(usuario.getId()).orElse(null);
+        if(exitUser != null){
+            return usuarioRepository.save(usuario);
+        }else{
+            return null;
+        }
+    }
 }
