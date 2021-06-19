@@ -32,4 +32,8 @@ public class UsuarioService {
             return null;
         }
     }
+
+    public Usuario validarUsuario(int dni,String clave){
+        return usuarioRepository.loginUser(dni,clave);
+    }
 }

@@ -1,11 +1,10 @@
 package com.isc.tienda.model;
 
 import javax.persistence.*;
-import java.sql.Date;
 
 @Entity
-@Table(name = "TUsuario", schema = "DBTiedaVirtual")
-public class Usuario {
+@Table(name = "TCliente", schema = "DBTiedaVirtual")
+public class Cliente {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -13,12 +12,10 @@ public class Usuario {
 
     private String dni;
     private String nombres;
-    private String apellidos;
     private String email;
     private String nroCel;
-    private Date fechaNac;
-    private String estado;
     private String password;
+    private String estado;
 
     public int getId() {
         return id;
@@ -44,14 +41,6 @@ public class Usuario {
         this.nombres = nombres;
     }
 
-    public String getApellidos() {
-        return apellidos;
-    }
-
-    public void setApellidos(String apellidos) {
-        this.apellidos = apellidos;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -68,12 +57,12 @@ public class Usuario {
         this.nroCel = nroCel;
     }
 
-    public Date getFechaNac() {
-        return fechaNac;
+    public String getPassword() {
+        return password;
     }
 
-    public void setFechaNac(Date fechaNac) {
-        this.fechaNac = fechaNac;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getEstado() {
@@ -82,13 +71,5 @@ public class Usuario {
 
     public void setEstado(String estado) {
         this.estado = estado;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 }
