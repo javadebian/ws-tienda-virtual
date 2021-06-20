@@ -2,19 +2,27 @@ package com.isc.tienda.model;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "TVenta", schema = "DBTiendaVirtual")
 public class Venta {
     @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
-    @OneToOne(mappedBy = "idCliente")
-    private Cliente cliente;
-    private Date  fechaReg;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date fechaReg;
     private String medioPago;
     private String nroOperacion;
+    //bi-directional many-to-one association to TCliente
+    @ManyToOne
+    @JoinColumn(name="idCliente")
+    private Cliente cliente;
+
+    //bi-directional many-to-one association to TDetalleVenta
+    @OneToMany(mappedBy="tventa")
+    private List<DetalleVenta> detalleVentas;
 
     public int getId() {
         return id;
@@ -22,14 +30,6 @@ public class Venta {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public Cliente getIdCliente() {
-        return cliente;
-    }
-
-    public void setIdCliente(Cliente cliente) {
-        this.cliente = cliente;
     }
 
     public Date getFechaReg() {
@@ -54,5 +54,21 @@ public class Venta {
 
     public void setNroOperacion(String nroOperacion) {
         this.nroOperacion = nroOperacion;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public List<DetalleVenta> getDetalleVentas() {
+        return detalleVentas;
+    }
+
+    public void setDetalleVentas(List<DetalleVenta> detalleVentas) {
+        this.detalleVentas = detalleVentas;
     }
 }

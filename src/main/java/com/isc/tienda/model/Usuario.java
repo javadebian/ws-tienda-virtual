@@ -16,6 +16,7 @@ public class Usuario {
     private String apellidos;
     private String email;
     private String nroCel;
+    @Temporal(TemporalType.DATE)
     private Date fechaNac;
     private String estado;
     private String password;

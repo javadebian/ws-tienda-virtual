@@ -1,21 +1,24 @@
 package com.isc.tienda.model;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
+import java.util.List;
 
 @Entity
 @Table(name = "TProducto", schema = "DBTiendaVirtual")
 public class Producto {
     @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
-    private String dni;
-    private String nombres;
+
+    @Lob
     private String descripcion;
-    private double precio;
-    private String tipo;
-    private int stock;
+    private String dni;
     private String img;
+    private String nombre;
+    private BigDecimal precio;
+    private int stock;
+    private String tipo;
 
     public int getId() {
         return id;
@@ -23,22 +26,6 @@ public class Producto {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getDni() {
-        return dni;
-    }
-
-    public void setDni(String dni) {
-        this.dni = dni;
-    }
-
-    public String getNombres() {
-        return nombres;
-    }
-
-    public void setNombres(String nombres) {
-        this.nombres = nombres;
     }
 
     public String getDescripcion() {
@@ -49,20 +36,36 @@ public class Producto {
         this.descripcion = descripcion;
     }
 
-    public double getPrecio() {
+    public String getDni() {
+        return dni;
+    }
+
+    public void setDni(String dni) {
+        this.dni = dni;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public BigDecimal getPrecio() {
         return precio;
     }
 
-    public void setPrecio(double precio) {
+    public void setPrecio(BigDecimal precio) {
         this.precio = precio;
-    }
-
-    public String getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
     }
 
     public int getStock() {
@@ -73,11 +76,11 @@ public class Producto {
         this.stock = stock;
     }
 
-    public String getImg() {
-        return img;
+    public String getTipo() {
+        return tipo;
     }
 
-    public void setImg(String img) {
-        this.img = img;
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 }
