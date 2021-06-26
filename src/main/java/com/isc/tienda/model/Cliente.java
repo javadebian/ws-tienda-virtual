@@ -1,23 +1,26 @@
 package com.isc.tienda.model;
 
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "TCliente", schema = "DBTiedaVirtual")
 public class Cliente {
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String dni;
-    private String email;
-    private String estado;
     private String nombres;
+    private String email;
     private String nroCel;
     private String password;
-    //bi-directional many-to-one association to TVenta
-    @OneToMany(mappedBy="tcliente")
-    private List<Venta> tventas;
+    private String estado;
+
+    @OneToMany
+    @JoinColumn(name = "idCliente")
+    private List<Venta> ventas;
 
     public int getId() {
         return id;
@@ -73,5 +76,13 @@ public class Cliente {
 
     public void setEstado(String estado) {
         this.estado = estado;
+    }
+
+    public List<Venta> getVentas() {
+        return ventas;
+    }
+
+    public void setVentas(List<Venta> ventas) {
+        this.ventas = ventas;
     }
 }

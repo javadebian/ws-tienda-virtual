@@ -1,28 +1,24 @@
 package com.isc.tienda.model;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.List;
 
 @Entity
-@Table(name = "TVenta", schema = "DBTiendaVirtual")
+@Table(name = "TVenta", schema = "DBTiedaVirtual")
 public class Venta {
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue( strategy =  GenerationType.IDENTITY)
     private int id;
-
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaReg;
+    @ManyToOne
+    @JoinColumn(name = "idCliente")
+    private Cliente cliente;
+    private Timestamp fechaReg;
     private String medioPago;
     private String nroOperacion;
-    //bi-directional many-to-one association to TCliente
-    @ManyToOne
-    @JoinColumn(name="idCliente")
-    private Cliente cliente;
-
-    //bi-directional many-to-one association to TDetalleVenta
-    @OneToMany(mappedBy="tventa")
-    private List<DetalleVenta> detalleVentas;
+    @OneToMany
+    @JoinColumn(name = "idVenta")
+    private List<DetalleVenta> detalleVenta;
 
     public int getId() {
         return id;
@@ -32,11 +28,19 @@ public class Venta {
         this.id = id;
     }
 
-    public Date getFechaReg() {
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public Timestamp getFechaReg() {
         return fechaReg;
     }
 
-    public void setFechaReg(Date fechaReg) {
+    public void setFechaReg(Timestamp fechaReg) {
         this.fechaReg = fechaReg;
     }
 
@@ -56,19 +60,11 @@ public class Venta {
         this.nroOperacion = nroOperacion;
     }
 
-    public Cliente getCliente() {
-        return cliente;
+    public List<DetalleVenta> getDetalleVenta() {
+        return detalleVenta;
     }
 
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
-
-    public List<DetalleVenta> getDetalleVentas() {
-        return detalleVentas;
-    }
-
-    public void setDetalleVentas(List<DetalleVenta> detalleVentas) {
-        this.detalleVentas = detalleVentas;
+    public void setDetalleVenta(List<DetalleVenta> detalleVenta) {
+        this.detalleVenta = detalleVenta;
     }
 }

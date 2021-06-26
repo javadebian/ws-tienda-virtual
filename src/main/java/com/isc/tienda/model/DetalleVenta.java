@@ -4,22 +4,19 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "TDetalleVenta", schema = "DBTiendaVirtual")
+@Table(name = "TDetalleVenta", schema = "DBTiedaVirtual")
 public class DetalleVenta {
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private int cantidad;
-    private BigDecimal precio;
-
-    //bi-directional many-to-one association to TProducto
     @ManyToOne
-    @JoinColumn(name="idProducto")
-    private Producto producto;
-    //bi-directional many-to-one association to TVenta
-    @ManyToOne
-    @JoinColumn(name="idVenta")
+    @JoinColumn(name = "idVenta")
     private Venta venta;
+    @ManyToOne
+    @JoinColumn(name = "idProducto")
+    private Producto producto;
+    private Integer cantidad;
+    private BigDecimal precio;
 
     public int getId() {
         return id;
@@ -29,20 +26,12 @@ public class DetalleVenta {
         this.id = id;
     }
 
-    public int getCantidad() {
-        return cantidad;
+    public Venta getVenta() {
+        return venta;
     }
 
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
-    }
-
-    public BigDecimal getPrecio() {
-        return precio;
-    }
-
-    public void setPrecio(BigDecimal precio) {
-        this.precio = precio;
+    public void setVenta(Venta venta) {
+        this.venta = venta;
     }
 
     public Producto getProducto() {
@@ -53,11 +42,19 @@ public class DetalleVenta {
         this.producto = producto;
     }
 
-    public Venta getVenta() {
-        return venta;
+    public Integer getCantidad() {
+        return cantidad;
     }
 
-    public void setVenta(Venta venta) {
-        this.venta = venta;
+    public void setCantidad(Integer cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    public BigDecimal getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(BigDecimal precio) {
+        this.precio = precio;
     }
 }

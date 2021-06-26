@@ -2,21 +2,20 @@ package com.isc.tienda.model;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "TUsuario", schema = "DBTiedaVirtual")
 public class Usuario {
     @Id
-    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
     private String dni;
     private String nombres;
     private String apellidos;
     private String email;
     private String nroCel;
-    @Temporal(TemporalType.DATE)
     private Date fechaNac;
     private String estado;
     private String password;

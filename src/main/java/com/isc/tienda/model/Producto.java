@@ -2,23 +2,23 @@ package com.isc.tienda.model;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.util.List;
+import java.util.Collection;
+import java.util.Objects;
 
 @Entity
-@Table(name = "TProducto", schema = "DBTiendaVirtual")
+@Table(name = "TProducto", schema = "DBTiedaVirtual", catalog = "")
 public class Producto {
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
+    private String nombre;
     @Lob
     private String descripcion;
-    private String dni;
-    private String img;
-    private String nombre;
     private BigDecimal precio;
-    private int stock;
     private String tipo;
+    private Integer stock;
+    private String img;
+    private String dni;
 
     public int getId() {
         return id;
@@ -26,30 +26,6 @@ public class Producto {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
-    public String getDni() {
-        return dni;
-    }
-
-    public void setDni(String dni) {
-        this.dni = dni;
-    }
-
-    public String getImg() {
-        return img;
-    }
-
-    public void setImg(String img) {
-        this.img = img;
     }
 
     public String getNombre() {
@@ -60,6 +36,14 @@ public class Producto {
         this.nombre = nombre;
     }
 
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
     public BigDecimal getPrecio() {
         return precio;
     }
@@ -68,19 +52,35 @@ public class Producto {
         this.precio = precio;
     }
 
-    public int getStock() {
-        return stock;
-    }
-
-    public void setStock(int stock) {
-        this.stock = stock;
-    }
-
     public String getTipo() {
         return tipo;
     }
 
     public void setTipo(String tipo) {
         this.tipo = tipo;
+    }
+
+    public Integer getStock() {
+        return stock;
+    }
+
+    public void setStock(Integer stock) {
+        this.stock = stock;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
+
+    public String getDni() {
+        return dni;
+    }
+
+    public void setDni(String dni) {
+        this.dni = dni;
     }
 }

@@ -4,6 +4,7 @@ import com.isc.tienda.model.Usuario;
 import com.isc.tienda.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.DigestUtils;
 
 import java.util.List;
 
@@ -13,6 +14,8 @@ public class UsuarioService {
     private UsuarioRepository usuarioRepository;
 
     public Usuario createUsuario(Usuario usuario){
+        String password = DigestUtils.md5DigestAsHex(String.valueOf(usuario.getDni()).getBytes());
+        usuario.setPassword(password);
         return usuarioRepository.save(usuario);
     }
 
@@ -33,7 +36,8 @@ public class UsuarioService {
         }
     }
 
-    public Usuario validarUsuario(int dni,String clave){
-        return usuarioRepository.loginUser(dni,clave);
+    public Usuario validarUsuario(String dni,String clave){
+        String password = DigestUtils.md5DigestAsHex(String.valueOf(clave).getBytes());
+        return usuarioRepository.loginUser(dni,password);
     }
 }
