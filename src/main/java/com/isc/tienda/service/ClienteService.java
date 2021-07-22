@@ -1,9 +1,11 @@
 package com.isc.tienda.service;
 
 import com.isc.tienda.model.Cliente;
+import com.isc.tienda.model.Usuario;
 import com.isc.tienda.repository.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.DigestUtils;
 
 import java.util.List;
 
@@ -41,5 +43,10 @@ public class ClienteService {
 
     public Cliente getClienteById(int id){
         return clienteRepository.findById(id).orElse(null);
+    }
+
+    public Cliente validarCliente(String dni, String clave){
+        String password = DigestUtils.md5DigestAsHex(String.valueOf(clave).getBytes());
+        return clienteRepository.loginClient(dni,password);
     }
 }

@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface ClienteRepository extends JpaRepository<Cliente,Integer> {
     @Query(value = "Select e from Cliente e where e.dni = ?1 AND e.password = ?2")
-    Cliente loginClient(int dni, String clave);
+    Cliente loginClient(String dni, String clave);
 }
