@@ -15,13 +15,13 @@ public class ProductoController {
     private ProductoService productoService;
 
     @PostMapping("/add")
-    public Producto crearProducto(@RequestBody Producto venta){
-        return productoService.crearProducto(venta);
+    public Producto crearProducto(@RequestBody Producto producto){
+        return productoService.crearProducto(producto);
     }
 
     @PutMapping("/update")
-    public Producto updateProducto(@RequestBody Producto venta){
-        return productoService.updateProducto(venta);
+    public Producto updateProducto(@RequestBody Producto producto){
+        return productoService.updateProducto(producto);
     }
 
     @DeleteMapping("/{id}")
@@ -34,8 +34,13 @@ public class ProductoController {
         return productoService.getProductoById(id);
     }
 
-    @GetMapping("/{dni}")
+    @GetMapping("/usuario/{dni}")
     public List<Producto> listProductoUsuario(@PathVariable String dni){
         return productoService.listProductosUsuario(dni);
+    }
+
+    @GetMapping("/all")
+    public List<Producto> listProductos(){
+        return productoService.listProductos();
     }
 }

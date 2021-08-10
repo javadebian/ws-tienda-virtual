@@ -20,6 +20,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping(value = "/upload", produces = "application/json")
+@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST})
 public class UploadController {
 
     @PostMapping("/")

@@ -44,4 +44,8 @@ public class ProductoService {
     public List<Producto> listProductosUsuario(String dni){
         return productoRepository.listarProductosUsuario(dni);
     }
+
+    public List<Producto> listProductos(){
+        return productoRepository.findAll();
+    }
 }
