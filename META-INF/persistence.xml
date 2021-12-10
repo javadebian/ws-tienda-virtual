@@ -8,7 +8,7 @@
     <class>com.isc.tienda.model.Cliente</class>
     <class>com.isc.tienda.model.DetalleVenta</class>
     <class>com.isc.tienda.model.Producto</class>
-    <class>com.isc.tienda.model.Usuario</class>
+    <class>com.isc.tienda.model.Proveedor</class>
     <class>com.isc.tienda.model.Venta</class>
   </persistence-unit>
 </persistence>

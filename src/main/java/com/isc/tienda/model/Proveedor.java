@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Table(name = "TUsuario", schema = "DBTiedaVirtual")
-public class Usuario {
+@Table(name = "TProveedor", schema = "DBTiendaVirtual")
+public class Proveedor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;

@@ -1,7 +1,6 @@
 package com.isc.tienda.service;
 
 import com.isc.tienda.model.Cliente;
-import com.isc.tienda.model.Usuario;
 import com.isc.tienda.repository.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +14,8 @@ public class ClienteService {
     private ClienteRepository clienteRepository;
 
     public Cliente crearCliente(Cliente cliente){
+        String password = DigestUtils.md5DigestAsHex(String.valueOf(cliente.getDni()).getBytes());
+        cliente.setPassword(password);
         return clienteRepository.save(cliente);
     }
 

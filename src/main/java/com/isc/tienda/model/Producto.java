@@ -6,7 +6,7 @@ import java.util.Collection;
 import java.util.Objects;
 
 @Entity
-@Table(name = "TProducto", schema = "DBTiedaVirtual", catalog = "")
+@Table(name = "TProducto", schema = "DBTiendaVirtual")
 public class Producto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,10 +15,12 @@ public class Producto {
     @Lob
     private String descripcion;
     private BigDecimal precio;
-    private String tipo;
     private Integer stock;
     private String img;
     private String dni;
+    @ManyToOne
+    @JoinColumn(name = "idCategoria")
+    private Categoria categoria;
 
     public int getId() {
         return id;
@@ -52,14 +54,6 @@ public class Producto {
         this.precio = precio;
     }
 
-    public String getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
-
     public Integer getStock() {
         return stock;
     }
@@ -82,5 +76,13 @@ public class Producto {
 
     public void setDni(String dni) {
         this.dni = dni;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
 }

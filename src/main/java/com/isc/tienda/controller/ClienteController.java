@@ -1,7 +1,6 @@
 package com.isc.tienda.controller;
 
 import com.isc.tienda.model.Cliente;
-import com.isc.tienda.model.Usuario;
 import com.isc.tienda.service.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -19,6 +18,11 @@ public class ClienteController {
     @GetMapping("/{id}")
     public Cliente obtenerClienteById(@PathVariable int id){
         return clienteService.getClienteById(id);
+    }
+
+    @PostMapping("/add")
+    public Cliente addCliente(@RequestBody Cliente cliente){
+        return clienteService.crearCliente(cliente);
     }
 
     @PostMapping("/login")

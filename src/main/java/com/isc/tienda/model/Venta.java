@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 import java.util.List;
 
 @Entity
-@Table(name = "TVenta", schema = "DBTiedaVirtual")
+@Table(name = "TVenta", schema = "DBTiendaVirtual")
 public class Venta {
     @Id
     @GeneratedValue( strategy =  GenerationType.IDENTITY)
@@ -16,6 +16,8 @@ public class Venta {
     private Timestamp fechaReg;
     private String medioPago;
     private String nroOperacion;
+    private String estado;
+
     @OneToMany
     @JoinColumn(name = "idVenta")
     private List<DetalleVenta> detalleVenta;
@@ -66,5 +68,13 @@ public class Venta {
 
     public void setDetalleVenta(List<DetalleVenta> detalleVenta) {
         this.detalleVenta = detalleVenta;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 }
